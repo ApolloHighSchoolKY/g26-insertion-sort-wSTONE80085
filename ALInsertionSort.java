@@ -1,35 +1,49 @@
 import java.util.ArrayList;
+import java.util.Arrays; 
 
-public class ALInsertionSort
-{
+public class ALInsertionSort {
 
-    public static void main(String[] args)
-    {
-    	Integer myNumbers[] = {0, 15, 6, 8, 2, 37};
-    	ArrayList<Integer> sorted = new ArrayList<Integer>();
-    	boolean inserted=false;
+    public static void main(String[] args) {
+        Integer[] myNumbers = {0, 15, 6, 8, 2, 37};
+        ArrayList<Integer> sorted = new ArrayList<>();
+        boolean inserted = false;
 
-		//Add the first number to the array list
+        System.out.println("Unsorted array: " + Arrays.toString(myNumbers));
 
-		//Loop once for all of the remaining numbers in the unsorted list
+       
+        sorted.add(myNumbers[0]);
 
-			//Check with each of the numbers in the sorted list
+     
+        for (int i = 1; i < myNumbers.length; i++) {
+            int currentNumber = myNumbers[i];
+            inserted = false; 
 
-				//If this number is less than one in the sorted list,
-				//insert it there
+           
+            for (int j = 0; j < sorted.size(); j++) {
+              
+                if (currentNumber < sorted.get(j)) {
+                    sorted.add(j, currentNumber);
+                    inserted = true;
+                    break; 
+                }
+            }
 
-			//If it was not inserted, stick it on the end.
+           
+            if (!inserted) {
+                sorted.add(currentNumber);
+            }
+        }
 
+       
 
-		//End Loop for unsorted list
+        System.out.println("Sorted ArrayList: " + sorted);
 
-		System.out.println(sorted);
+      
+        for (int i = 0; i < myNumbers.length; i++) {
+            myNumbers[i] = sorted.get(i);
+        }
 
-		//Move the data back to the array
-
-		//Print the contents of the array
-
+      
+        System.out.println("Sorted array: " + Arrays.toString(myNumbers));
     }
-
-
 }
